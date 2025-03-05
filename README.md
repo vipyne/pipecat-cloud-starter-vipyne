@@ -44,7 +44,7 @@ pcc --help
 pcc auth login
 ```
 
-### 4. Acquire required API keys
+### 4. Acquire third-party API keys
 
 This starter requires the following API keys:
 
@@ -71,7 +71,7 @@ export PCC_ORG_KEY="my-first-organization-key"
 
 ### 2. setup secrets
 
-#### a. voice ai agent secrets
+#### a. voice ai agent app secrets
 ```bash
 # Copy the example env file
 cp example.env .env
@@ -99,7 +99,22 @@ then pass in your docker username and password.
 > ? Password for image repository 'https://index.docker.io/v1/' *********************
 > ```
 
-#### c. check secrets
+#### c. organization secret
+- an organization can have many agents; an agent only belongs to one organization
+```bash
+pcc organizations keys create
+pcc organizations keys use
+```
+
+- for example:
+```bash
+pcc organizations keys create
+? Enter human readable name for API key e.g. 'Pipecat Key'
+=> my-first-organization-key
+pcc organizations keys use
+```
+
+#### d. check secrets
 > secret values will not be shown
 ```bash
 pcc secrets list
@@ -151,21 +166,10 @@ dockerhub_name/my-first-agent:0.1 \
 --credentials my-pull-secret
 ```
 
-#### 3. Prepare to run your agent
+#### 3. Check status of your agent
 ```bash
 pcc agent logs "${PCC_AGENT_NAME}"
 pcc agent status "${PCC_AGENT_NAME}"
-
-pcc organizations keys create
-pcc organizations keys use
-```
-
-- for example:
-```bash
-pcc organizations keys create
-? Enter human readable name for API key e.g. 'Pipecat Key'
-=> my-first-organization-key
-pcc organizations keys use
 ```
 
 ### 4. Start your agent
