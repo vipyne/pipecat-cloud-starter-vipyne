@@ -37,7 +37,7 @@ pip install pipecatcloud
 Clone the starter project from GitHub:
 
 ```bash
-git clone https://github.com/pipecat-ai/pipecat-cloud-starter
+git clone https://github.com/daily-co/pipecat-cloud-starter
 cd pipecat-cloud-starter
 ```
 
